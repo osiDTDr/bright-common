@@ -1,5 +1,7 @@
 package com.bright.common.data.annotation;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.lang.annotation.*;
 
 /**
@@ -12,5 +14,5 @@ public @interface NotSet {
 
     boolean value() default true;
 
-    String defaultValue() default "";
+    String defaultValue() default StringUtils.EMPTY;
 }

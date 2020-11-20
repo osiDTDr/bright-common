@@ -1,7 +1,25 @@
 # bright-common
 General tools to help our job
 
-todo
-1.java对象的自动生成
-2.通过反射造数据
-3.对象转换工具类
+# Package introduce
+
+| Package | README |
+| ------ | ------ |
+| data | 测试数据的生成 |
+| utils | 通用的工具类 |
+| validate | 数据校验 |
+
+# Todos
+
+ - Write MORE Tests
+ - 对象转换工具类,可以尝试javassist生成代码
+ - java对象的自动生成,例如Mybatis-generator
+
+License
+----
+
+MIT
+
+
+**Free Software, Hell Yeah!**
+

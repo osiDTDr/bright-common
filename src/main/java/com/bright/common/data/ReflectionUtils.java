@@ -14,20 +14,18 @@ public class ReflectionUtils {
 
     /**
      * produce data
-     * 1.先获取类的所有属性值，判断是否需要赋值
      */
-    public static void produce(Class clazz) {
+    public static Object produce(Object object, int defaultValue, ObjectProducePostProcessors objectProducePostProcessors) {
+        Class<?> clazz = object.getClass();
         Field[] declaredFields = clazz.getDeclaredFields();
+        object = objectProducePostProcessors.postProcessBefore(object);
         for (Field field : declaredFields) {
             String fieldTypeName = field.getType().getName();
-            if (fieldTypeName.equals(Integer.class.getName())
-                    || int.class.getName().equals(fieldTypeName)) {
-
+            if (fieldTypeName.equals(Integer.class.getName()) || int.class.getName().equals(fieldTypeName)) {
+                ClassUtils.invokeSet(object, field, defaultValue);
             }
         }
-    }
-
-    public static void main(String[] args) {
-        produce(User.class);
+        object = objectProducePostProcessors.postProcessAfter(object);
+        return object;
     }
 }
