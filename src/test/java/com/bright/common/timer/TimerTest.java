@@ -25,5 +25,11 @@ public class TimerTest {
         }, 5, TimeUnit.SECONDS);
 
         timer.newTimeout(timeout -> logger.info("current time is {}", new Date()), 5, TimeUnit.SECONDS);
+        try {
+            Thread.sleep(10_000);
+        } catch (InterruptedException e) {
+            logger.error("thread interrupt error ", e);
+            Thread.currentThread().interrupt();
+        }
     }
 }
